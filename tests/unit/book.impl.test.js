@@ -48,8 +48,4 @@ describe('Book', () => {
       return getBooks().then(data => expect(data).toMatchObject({ status: 'fail' }));
     });
   });
-
-  describe('When Not Authenticated', () => {
-    // TODO
-  });
 });
