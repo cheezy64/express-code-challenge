@@ -19,3 +19,9 @@ The `Institution` model will be as defined
 
 The `Book` model will have an array of the references to institutions, reaching up to thousands (I think this is acceptable due to the outdated recommendation).  We should also denormalize the institution names, as the institution name isn't expected to change often
 
+# Design
+* Testing
+  * There will be a lot of asynchronous calls, so ensure that all methods I want to test will return a promise.
+  * Implementing directly inside the [get|post] Express calls will make it hard to unit test
+* Questions
+  * How to mock out dependencies.  In OOP, I'd use dependency injection.  Pass in mocks via constructor?
