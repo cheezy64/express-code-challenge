@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const { model, Schema } = mongoose;
-const { ObjectId } = Schema;
+const { ObjectId } = Schema.Types;
 
 // TODO index by email for logging in
 const UserSchema = new Schema({

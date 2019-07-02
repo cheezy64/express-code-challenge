@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const { model, Schema } = mongoose;
-const { ObjectId } = Schema;
+const { ObjectId } = Schema.Types;
 
 // TODO index isbn, title, author, and denormalized institution domain
 // TODO validate isbn

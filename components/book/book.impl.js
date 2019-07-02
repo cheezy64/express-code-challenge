@@ -15,7 +15,28 @@ module.exports = (app) => {
     }
   };
 
+  // TODO FIXME having trouble getting this validating correctly through the model when sending via Postman
+  const addBook = async (book) => {
+    const { isbn, title, author, institutions } = book;
+
+    try {
+      const newBook = new Book({
+        isbn,
+        title,
+        author,
+        institutions,
+      });
+      // Lean on the model for validation
+      await newBook.validate();
+      const data = await newBook.save();
+      return jsend.success(data);
+    } catch (err) {
+      return jsend.fail(err);
+    }
+  };
+
   return {
     getBooks,
+    addBook,
   };
 };
