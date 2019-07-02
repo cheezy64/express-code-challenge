@@ -28,3 +28,6 @@ The `Book` model will have an array of the references to institutions, reaching 
     * Update: `mockingoose` seems to be decent for mocking a mongoose model.  It does it without needing to pass the mock
     via the constructor.  Further research makes it seem like `jest` has this ability too.  Therefore, the design won't
     have mocks passed in via the constructor.
+
+# TODO
+* Instead of error literals, throw an enum value that the front end can use to localize

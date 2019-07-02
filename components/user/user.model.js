@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+// const uniqueValidator = require('mongoose-unique-validator');
 const validator = require('validator');
 
 const { model, Schema } = mongoose;
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true, // TODO FIXME "unique" attribute is not a good way to check for duplicates.  Add more robust validation
     validate: {
       validator(value) {
         return validator.isEmail(value);
@@ -44,6 +44,12 @@ const UserSchema = new Schema({
   timestamps: true,
 });
 
+//// Password Handling
+UserSchema.methods.comparePassword = async function comparePassword(unhashedPassword) {
+  const isMatch = await bcrypt.compare(unhashedPassword, this.password);
+  if (!isMatch) throw new Error('Email and/or password does not match records');
+};
+
 UserSchema.pre('save', async function saltAndHashPassword() {
   if (!this.isModified('password')) return;
 
@@ -51,6 +57,6 @@ UserSchema.pre('save', async function saltAndHashPassword() {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-UserSchema.plugin(uniqueValidator);
+// UserSchema.plugin(uniqueValidator);
 
 module.exports = model('User', UserSchema);

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 // TODO FIXME Validation fails on unit test.  Pretty sure it's a unit test issue but since this module isn't
 // vital, I'm going to disable this for now until I have time to investigate
-
 // const uniqueValidator = require('mongoose-unique-validator');
 
 const { model, Schema } = mongoose;

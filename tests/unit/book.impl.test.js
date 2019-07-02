@@ -33,8 +33,9 @@ describe('Book', () => {
   });
 
   describe('.getBooks(objId1) - correct usage', () => {
-    it('returns status success', () => {
-      return getBooks(objId1).then(data => expect(data).toMatchObject({ status: 'success' }));
+    it('returns status success', async () => {
+      const response = await getBooks(objId1);
+      expect(response).toMatchObject({ status: 'success' });
     });
 
     it('returns data from query', () => {
@@ -44,8 +45,9 @@ describe('Book', () => {
   });
 
   describe('.getBooks() - incorrect usage', () => {
-    it('returns fail', () => {
-      return getBooks().then(data => expect(data).toMatchObject({ status: 'fail' }));
+    it('returns fail', async () => {
+      const response = await getBooks()
+      expect(response).toMatchObject({ status: 'fail' });
     });
   });
 });
