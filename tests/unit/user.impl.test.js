@@ -72,7 +72,7 @@ describe('User', () => {
     });
 
     it('returns fail when email has already been registered', async () => {
-      mockingoose(User).toReturn(docUser1, 'find');
+      mockingoose(User).toReturn(docUser1, 'findOne');
       const response = await addUser({ email: docUser1.email, password: user1UnhashedPassword });
       expect(response).toMatchObject({ status: 'fail' });
     });
@@ -89,7 +89,7 @@ describe('User', () => {
     });
 
     it('returns a token when user logs in successfully', async () => {
-      mockingoose(User).toReturn(docUser1, 'find');
+      mockingoose(User).toReturn(docUser1, 'findOne');
       const response = await loginUser({ email: docUser1.email, password: user1UnhashedPassword });
       expect(response).toMatchObject({ status: 'success' });
     });
