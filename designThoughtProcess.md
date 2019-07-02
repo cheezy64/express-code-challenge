@@ -31,3 +31,5 @@ The `Book` model will have an array of the references to institutions, reaching 
 
 # TODO
 * Instead of error literals, throw an enum value that the front end can use to localize
+* I realized that I treat all errors as `JSend.fail`. A way around this would be to throw a specific instance of an Error
+* Add integration tests.  I've seen documents that where they use a module named 'supertest', but I'm not familiar with it and don't have enough time to figure it out

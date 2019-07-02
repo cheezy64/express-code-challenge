@@ -60,10 +60,10 @@ module.exports = (app) => {
       await foundUser.comparePassword(password);
 
       const data = {
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        institution: user.institution,
+        name: foundUser.name,
+        email: foundUser.email,
+        role: foundUser.role,
+        institution: foundUser.institution,
       };
 
       const token = await jwtSign(data);

@@ -24,11 +24,11 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // Passport
-require('./components/passport/passport')(app);
+const passport = require('./components/passport/passport')(app);
 
 //// Routes
 app.get('/', indexRoute);
-app.use('/books', bookRoute);
+app.use('/books', passport.authenticate('jwt', { session: false, failureRedirect: '/' }), bookRoute);
 app.use('/institution', institutionRoute);
 app.use('/users', userRoute);
 
