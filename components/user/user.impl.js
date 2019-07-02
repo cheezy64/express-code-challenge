@@ -1,6 +1,7 @@
 const jsend = require('jsend');
 const validator = require('validator');
 const User = require('./user.model');
+const { jwtSign } = require('../passport/jwt/jwt');
 
 const parseInstitutionFromEmail = (email) => {
   if (!validator.isEmail(email)) throw new Error('Invalid email!');
@@ -56,9 +57,7 @@ const loginUser = async (user) => {
       role: user.role,
     };
 
-    const tokenOpts = {};
-    const token = await generateJsonWebToken(data, tokenOpts);
-
+    const token = await jwtSign(data);
     return jsend.success(token);
   } catch (err) {
     return jsend.fail(err);
