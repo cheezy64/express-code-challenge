@@ -32,7 +32,7 @@ describe('Book', () => {
     mockingoose.resetAll();
   });
 
-  describe('getBooks(objId1)', () => {
+  describe('.getBooks(objId1) - correct usage', () => {
     it('returns status success', () => {
       return getBooks(objId1).then(data => expect(data).toMatchObject({ status: 'success' }));
     });
@@ -43,7 +43,7 @@ describe('Book', () => {
     });
   });
 
-  describe('getBooks()', () => {
+  describe('.getBooks() - incorrect usage', () => {
     it('returns fail', () => {
       return getBooks().then(data => expect(data).toMatchObject({ status: 'fail' }));
     });
