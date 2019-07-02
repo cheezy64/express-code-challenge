@@ -25,3 +25,6 @@ The `Book` model will have an array of the references to institutions, reaching 
   * Implementing directly inside the [get|post] Express calls will make it hard to unit test
 * Questions
   * How to mock out dependencies.  In OOP, I'd use dependency injection.  Pass in mocks via constructor?
+    * Update: `mockingoose` seems to be decent for mocking a mongoose model.  It does it without needing to pass the mock
+    via the constructor.  Further research makes it seem like `jest` has this ability too.  Therefore, the design won't
+    have mocks passed in via the constructor.

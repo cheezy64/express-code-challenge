@@ -6,6 +6,7 @@
     "airbnb-base",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:jest/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended"
   ],
