@@ -1,3 +1,24 @@
+# Installation
+1. Modify `MONGO_URI` and `PORT` in `.env.defaults` to match your environment
+2. Run `mongod` locally and install necessary npm packages
+3. Run `npm start` to run the server
+
+# Testing the Routes
+1. Import `postman_collection.json`
+2. Run the following in Postman
+   2.1 `Create Institution`
+   2.2 `Create User - Che`, which will link against the newly created institution
+   2.3 `Sign in - Che`.  This will give you a JSON web token (value of `{ data }` without the quotes)
+   2.4 Edit `Book - UPDATE Bearer Token in Authorization`, and set the Bearer Token 
+   2.5 Run `Get List of Books`, both authorized and unauthorized
+3. Unfortunately, I wasn't able to populate a list of books.  If you're feeling adventurous, use `mongod` to add them
+
+---
+
+# Design and thought process
+Please see `designThoughtProcess.md`
+
+---
 # Express Coding Challenge
 The premise of this challenge is to see the approach you take to:
 - Use an ORM to interact with a simple database model

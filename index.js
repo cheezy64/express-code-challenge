@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const app = express();
 
 // Routes
-const indexRoute = require('./routes/index.js');
+const indexRoute = require('./components/base/index.js');
 const bookRoute = require('./components/book/book.route')(app);
 const institutionRoute = require('./components/institution/institution.route')(app);
 const userRoute = require('./components/user/user.route')(app);
