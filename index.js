@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
 // Logging
 app.use(morgan('dev'));
 // Parsing
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true })); // true to support arrays
 app.use(express.json());
 // Passport
 const passport = require('./components/passport/passport')(app);
@@ -40,5 +40,8 @@ app.use((err, req, res, next) => {
   if (data) console.error(data);
   next(data); // Data is where the error is stored
 });
+
+// const { jwtVerify } = require('./components/passport/jwt/jwt');
+// (async () => console.log(await jwtVerify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hlIiwiZW1haWwiOiJjaGVAY2hlLmNvbSIsInJvbGUiOiJhZG1pbmlzdHJhdG9yIiwiaW5zdGl0dXRpb24iOiI1ZDFjZjE2M2E5NWZkMjQ2YjY4NDk5MmMiLCJpYXQiOjE1NjIxNzc5MDMsImV4cCI6MTU5MzczNTUwM30.REL2VL8PIjT92PW1EQLLVgyvkKC2UsLwNxEDP432_Hs')))();
 
 app.listen(process.env.PORT, () => console.log(`Open http://localhost:${process.env.PORT} to see a response.`));

@@ -1,120 +1,13 @@
 {
 	"info": {
 		"_postman_id": "0ab7370b-5bda-4703-8e1a-a7b1c8d7738e",
-		"name": "Bibliotech Coding Challenge",
+		"name": "Bibliotech Coding Challenge - UPDATE Variables",
+		"description": "1. Create Institution\n2. Create User\n3. Login as 'che', and note institution ID from response (if running server in development mode)\n3.1 Copy the token from the 'data' key in the reponse\n3.2 Copy the institution id. In dev mode, it can be retrieved from the 'institutionId' key in the response.  Otherwise go to http://jwt.io and paste in token to get institution ID\n4. In the 'Bibliotech Coding Challenge' collection, right-click and edit\n4.1 Update the {{CURR_USER_INSTITUTION}} with the institutionId\n5. In the Book collection, right-click and edit\n5.1 Set 'Authorization' to 'Bearer Token' and paste the token into it\n6. Run commands in Book collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Book - UPDATE Bearer Token in Authorization",
-			"item": [
-				{
-					"name": "Get List of Books",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:5000/books/",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"books",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get List of Books - Unauthorized",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:5000/books/",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"books",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Book 1 - Matching user Che institutions",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\tisbn: \"123\",\n    title: \"JS\",\n    author: [\"Me\"],\n    institutions: [\"5d1bcfb0018efc3ac27ec837\"]\n}"
-						},
-						"url": {
-							"raw": "localhost:5000/books/create",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"books",
-								"create"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hlIiwiZW1haWwiOiJjaGVAY2hlLmNvbSIsInJvbGUiOiJhZG1pbmlzdHJhdG9yIiwiaW5zdGl0dXRpb24iOiI1ZDFiY2ZiMDAxOGVmYzNhYzI3ZWM4MzciLCJpYXQiOjE1NjIxMDM3MzUsImV4cCI6MTU5MzY2MTMzNX0.jAyG8yeBGdJxNPKyAIqNVcL2guMzDiGDIgzLlp94vm0",
-						"type": "string"
-					}
-				]
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "9b023c03-3bdc-488b-a429-5a96c97d4819",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "d683be2d-93ee-437f-b497-3d8918f00025",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Institution",
+			"name": "1. Institution",
 			"item": [
 				{
 					"name": "Create Institution - che.com",
@@ -162,10 +55,32 @@
 					},
 					"response": []
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a4bda058-4847-4feb-a92f-7afa6d527c53",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "766bb703-6ad4-4ad3-b801-de469714cffe",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
-			"name": "User",
+			"name": "2. User",
 			"item": [
 				{
 					"name": "Create User - Che",
@@ -259,6 +174,208 @@
 					},
 					"response": []
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "37155c50-fc4e-48a0-adfb-24519f4188f3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1563dd6-b978-4df8-80ef-c8eb58289f07",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Book - UPDATE Bearer Token in Authorization",
+			"item": [
+				{
+					"name": "Add Book 1 - Matching user Che institutions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "isbn",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "50 Shades",
+									"type": "text"
+								},
+								{
+									"key": "authors[0]",
+									"value": "Me",
+									"type": "text"
+								},
+								{
+									"key": "institutions[0]",
+									"value": "{{CUR_USER_INSTITUTION}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/books/create",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Book 2 - Matching user Che institutions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "isbn",
+									"value": "983",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Harry Potter",
+									"type": "text"
+								},
+								{
+									"key": "authors[0]",
+									"value": "Me",
+									"type": "text"
+								},
+								{
+									"key": "institutions[0]",
+									"value": "{{CUR_USER_INSTITUTION}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/books/create",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List of Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/books/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List of Books - Unauthorized",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/books/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hlIiwiZW1haWwiOiJjaGVAY2hlLmNvbSIsInJvbGUiOiJhZG1pbmlzdHJhdG9yIiwiaW5zdGl0dXRpb24iOiI1ZDFkMDM1NDg1MGYxOTRhOTUxZmVhOTQiLCJpYXQiOjE1NjIxODI0OTAsImV4cCI6MTU5Mzc0MDA5MH0.zHKEidQG44Mm3kKC-GE5rAyfvU8Epf02p4VUSY4LS-M",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9b023c03-3bdc-488b-a429-5a96c97d4819",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d683be2d-93ee-437f-b497-3d8918f00025",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -300,6 +417,14 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"id": "acf5dbd0-7eab-4b79-963d-09bc97237823",
+			"key": "CUR_USER_INSTITUTION",
+			"value": "5d1d0354850f194a951fea94",
+			"type": "string"
 		}
 	]
 }

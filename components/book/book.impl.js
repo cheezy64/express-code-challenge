@@ -7,7 +7,7 @@ module.exports = (app) => {
     if (!institutionId) return jsend.fail('Institution ID Required');
 
     try {
-      const projection = 'isbn title author';
+      const projection = 'isbn title authors -_id';
       const data = await Book.find({ institutions: { $in: institutionId } }, projection);
       return jsend.success(data);
     } catch (err) {
@@ -17,19 +17,19 @@ module.exports = (app) => {
 
   // TODO FIXME having trouble getting this validating correctly through the model when sending via Postman
   const addBook = async (book) => {
-    const { isbn, title, author, institutions } = book;
+    const { isbn, title, authors, institutions } = book;
 
     try {
       const newBook = new Book({
         isbn,
         title,
-        author,
+        authors,
         institutions,
       });
       // Lean on the model for validation
       await newBook.validate();
-      const data = await newBook.save();
-      return jsend.success(data);
+      await newBook.save();
+      return jsend.success({ isbn, title, authors });
     } catch (err) {
       return jsend.fail(err);
     }

@@ -67,7 +67,9 @@ module.exports = (app) => {
       };
 
       const token = await jwtSign(data);
-      return jsend.success(token);
+      const response = jsend.success(token);
+      if (process.env.NODE_ENV === 'development') response.institutionId = foundUser.institution;
+      return response;
     } catch (err) {
       return jsend.fail(err);
     }
